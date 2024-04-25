@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Light</title>
+    <style>
+        .traffic-light {
+            width: 100px;
+            height: 200px;
+            background-color: #333;
+            border-radius: 0;
+            padding: 20px;
+            position: relative;
+      		margin: 0 auto; /* center the traffic light */
+        }
+
+        .light {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            position: absolute;
+      		left: 50%; /* center the lights horizontally */
+  			transform: translateX(-50%); /* center the lights horizontally */
+        }
+
+        .red {
+            background-color: red;
+            top: 20px;
+        }
+
+        .yellow {
+            background-color: yellow;
+            top: 100px;
+        }
+
+        .green {
+            background-color: green;
+            top: 180px;
+        }
+    </style>
+</head>
+<body>
+    <div class="traffic-light">
+        <div id="red" class="light red"></div>
+        <div id="yellow" class="light yellow"></div>
+        <div id="green" class="light green"></div>
+    </div>
+
+    <script>
+        const lights = ['red', 'yellow', 'green'];
+        let currentLight = 0;
+
+        function changeLight() {
+            for (let i = 0; i < lights.length; i++) {
+                document.getElementById(lights[i]).style.backgroundColor = i === currentLight ? lights[i] : 'gray';
+            }
+            currentLight = (currentLight + 1) % lights.length;
+        }
+
+        setInterval(changeLight, 2000); // Change light every 30-90 seconds
+    </script>
+</body>
+</html>
